@@ -6,8 +6,7 @@ object Main extends TaskMixin {
   def main(args: Array[String]): Unit = {
     val increasing = input().map(_.toInt)
       .sliding(2)
-      .map(seq => if (seq.head < seq.tail.head) 1 else 0)
-      .sum
+      .count(seq => seq.head < seq.tail.head)
 
     printFirst(increasing)
 
@@ -16,8 +15,7 @@ object Main extends TaskMixin {
       .sliding(3)
       .map(_.sum)
       .sliding(2)
-      .map(seq => if (seq.head < seq.tail.head) 1 else 0)
-      .sum
+      .count(seq => seq.head < seq.tail.head)
 
     printSecond(increasingWindows)
   }
