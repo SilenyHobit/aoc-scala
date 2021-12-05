@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+    id 'scala'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+def scalaVersion = "2.13.7"
+def scalaMinorVersion = "2.13"
+
+dependencies {
+    implementation(group: "org.scala-lang", name: "scala-library", version: "$scalaVersion")
+    implementation(group: "org.scala-lang", name: "scala-reflect", version: "$scalaVersion")
+
+    implementation(group: "com.typesafe.scala-logging", name: "scala-logging_$scalaMinorVersion", version: "3.9.4")
+
+}
+
+test {
+    useJUnitPlatform()
+}
