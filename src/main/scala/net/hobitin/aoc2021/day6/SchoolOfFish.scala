@@ -20,7 +20,7 @@ class SchoolOfFish private (private val fish: Array[Long]) {
 }
 
 object SchoolOfFish {
-  def build(input: String): SchoolOfFish = {
+  def apply(input: String): SchoolOfFish = {
     val fish = new Array[Long](9)
     input
       .split(",")
