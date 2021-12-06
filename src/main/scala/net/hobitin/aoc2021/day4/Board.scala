@@ -26,7 +26,7 @@ class Board private(private val board: Array[Array[Int]]) {
 object Board {
   def apply(board: Seq[String]): Board = new Board(board.map(value => {
       value.split(" ")
-        .filter(value => value.nonEmpty)
+        .filter(_.nonEmpty)
         .map(_.toInt)
     }).toArray)
 }

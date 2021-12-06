@@ -25,7 +25,7 @@ object SchoolOfFish {
     input
       .split(",")
       .map(_.toInt)
-      .foreach(i => fish(i) += 1)
+      .foreach(fish(_) += 1)
 
     new SchoolOfFish(fish)
   }

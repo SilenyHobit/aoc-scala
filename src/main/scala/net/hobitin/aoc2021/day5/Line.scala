@@ -4,9 +4,9 @@ case class Line(a: Point, b: Point) {
 
   def straightPoints(): Seq[Point] = {
     if (a.x == b.x)
-      (Math.min(a.y, b.y) to Math.max(a.y,b.y)).map(index => Point(a.x, index))
+      (Math.min(a.y, b.y) to Math.max(a.y,b.y)).map(Point(a.x, _))
     else if (a.y == b.y)
-      (Math.min(a.x, b.x) to Math.max(a.x,b.x)).map(index => Point(index, a.y))
+      (Math.min(a.x, b.x) to Math.max(a.x,b.x)).map(Point(_, a.y))
     else
       Seq.empty
   }
