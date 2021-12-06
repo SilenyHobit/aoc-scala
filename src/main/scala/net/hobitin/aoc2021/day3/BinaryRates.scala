@@ -31,9 +31,7 @@ class BinaryRates {
     Integer.parseInt(epsilon, 2)
   }
 
-  def findOxygenRating(input: Seq[String]): Int = {
-    findOxygenRating(input, 0, commonality.get)
-  }
+  def findOxygenRating(input: Seq[String]): Int = findOxygenRating(input, 0, commonality.get)
 
   @tailrec
   private def findOxygenRating(input: Seq[String], index: Int, localCommonality: Array[Int]): Int = {
@@ -53,9 +51,7 @@ class BinaryRates {
     findOxygenRating(filtered, index+1, updatedCommonality)
   }
 
-  def findScrubberRating(input: Seq[String]): Int = {
-    findScrubberRating(input, 0, commonality.get)
-  }
+  def findScrubberRating(input: Seq[String]): Int = findScrubberRating(input, 0, commonality.get)
 
   @tailrec
   private def findScrubberRating(input: Seq[String], index: Int, localCommonality: Array[Int]): Int = {

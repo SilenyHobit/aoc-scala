@@ -28,12 +28,8 @@ class Boards(private var boards: Seq[Board]) {
     boards.isEmpty
   }
 
-  def firstSum(): Int = {
-    firstFinished.get.sum() * firstFinishedNumber
-  }
+  def firstSum(): Int = firstFinished.get.sum * firstFinishedNumber
 
-  def lastSum(): Int = {
-    lastFinished.get.sum() * lastFinishedNumber
-  }
+  def lastSum(): Int = lastFinished.get.sum * lastFinishedNumber
 
 }
