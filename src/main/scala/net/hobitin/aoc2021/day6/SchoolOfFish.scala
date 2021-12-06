@@ -1,6 +1,6 @@
 package net.hobitin.aoc2021.day6
 
-class SchoolOfFish private (private val fish: Array[BigInt]) {
+class SchoolOfFish private (private val fish: Array[Long]) {
   def nextDay(): Unit = {
     val finished = fish(0)
     fish(0) = fish(1)
@@ -16,14 +16,14 @@ class SchoolOfFish private (private val fish: Array[BigInt]) {
     fish(8) = finished
   }
 
-  def count(): BigInt = {
+  def count(): Long = {
     fish.sum
   }
 }
 
 object SchoolOfFish {
   def build(input: String): SchoolOfFish = {
-    val fish = Array(BigInt(0),BigInt(0),BigInt(0),BigInt(0),BigInt(0),BigInt(0),BigInt(0),BigInt(0),BigInt(0))
+    val fish = new Array[Long](9)
     input
       .split(",")
       .map(_.toInt)
