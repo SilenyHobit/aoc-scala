@@ -8,7 +8,7 @@ object Main extends TaskMixin {
   private val pattern = Pattern.compile("(\\d+),(\\d+) -> (\\d+),(\\d+)")
   def main(args: Array[String]): Unit = {
     val array = Array.ofDim[Int](1000, 1000)
-    val lines = input().map{pattern.matcher}
+    val lines = input.map{pattern.matcher}
       .filter(matcher => matcher.find())
       .map(matcher => Line(Point(matcher.group(1).toInt, matcher.group(2).toInt), Point(matcher.group(3).toInt, matcher.group(4).toInt)))
 

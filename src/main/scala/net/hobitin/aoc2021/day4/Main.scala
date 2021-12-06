@@ -4,7 +4,7 @@ import net.hobitin.TaskMixin
 
 object Main extends TaskMixin {
   def main(args: Array[String]): Unit = {
-    val inputRows = input()
+    val inputRows = input
     val calledNumbers = inputRows.head
       .split(",")
       .map(_.toInt)

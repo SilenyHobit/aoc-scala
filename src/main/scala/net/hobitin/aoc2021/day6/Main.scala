@@ -4,7 +4,7 @@ import net.hobitin.TaskMixin
 
 object Main extends TaskMixin{
   def main(args: Array[String]): Unit = {
-    val fish = SchoolOfFish.build(input().head)
+    val fish = SchoolOfFish.build(input.head)
 
     for (_ <- 0 until 80) fish.nextDay()
 
