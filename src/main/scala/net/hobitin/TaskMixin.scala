@@ -10,12 +10,12 @@ trait TaskMixin {
       .toSeq
   }.get
 
-  def printFirst(value: AnyVal): Unit = {
+  def printFirst(value: Any): Unit = {
     println("First task:")
     println(value)
   }
 
-  def printSecond(value: AnyVal): Unit = {
+  def printSecond(value: Any): Unit = {
     println("Second task:")
     println(value)
   }

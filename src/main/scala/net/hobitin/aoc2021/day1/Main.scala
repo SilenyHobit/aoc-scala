@@ -4,7 +4,8 @@ import net.hobitin.TaskMixin
 
 object Main extends TaskMixin {
   def main(args: Array[String]): Unit = {
-    val increasing = input().map(_.toInt)
+    val increasing = input()
+      .map(_.toInt)
       .sliding(2)
       .count(seq => seq.head < seq.tail.head)
 
