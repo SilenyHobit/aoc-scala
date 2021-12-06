@@ -13,7 +13,7 @@ object Main extends TaskMixin {
     val boards = new Boards(inputRows.tail
       .grouped(6)
       .map(_.tail)
-      .map { Board.build }
+      .map(Board.build)
       .toSeq
     )
 
