@@ -17,14 +17,14 @@ class BinaryRates {
     this
   }
 
-  def gammaRate(): Int = {
+  def gammaRate: Int = {
     val gamma = commonality.get
       .map(number => if (number<0) "0" else "1")
       .reduce(_+_)
     Integer.parseInt(gamma, 2)
   }
 
-  def epsilonRate(): Int = {
+  def epsilonRate: Int = {
     val epsilon = commonality.get
       .map(number => if (number>0) "0" else "1")
       .reduce(_+_)

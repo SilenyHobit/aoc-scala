@@ -17,7 +17,7 @@ class Board private(private val board: Array[Array[Int]]) {
 
   private def checkColumn(column: Int): Boolean = !(0 until 5).exists(index => board(index)(column) != -1)
 
-  def sum(): Int = board
+  def sum: Int = board
     .map(array => array.filter(_ != -1).sum)
     .sum
 

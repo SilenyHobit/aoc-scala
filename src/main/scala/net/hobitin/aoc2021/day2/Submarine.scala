@@ -15,6 +15,6 @@ class Submarine {
     this
   }
 
-  def report(): Long = depth * position
+  def report: Long = depth * position
 
 }

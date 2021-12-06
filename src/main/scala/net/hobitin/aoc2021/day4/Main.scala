@@ -20,7 +20,7 @@ object Main extends TaskMixin {
     calledNumbers.map(number => boards.mark(number))
       .takeWhile(!_)
 
-    printFirst(boards.firstSum())
-    printSecond(boards.lastSum())
+    printFirst(boards.firstSum)
+    printSecond(boards.lastSum)
   }
 }

@@ -8,10 +8,10 @@ object Main extends TaskMixin{
 
     (0 until 80).foreach(_ => fish.nextDay())
 
-    printFirst(fish.count())
+    printFirst(fish.count)
 
     (0 until 176).foreach(_ => fish.nextDay())
 
-    printSecond(fish.count())
+    printSecond(fish.count)
   }
 }

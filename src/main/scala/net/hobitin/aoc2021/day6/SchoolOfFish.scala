@@ -16,7 +16,7 @@ class SchoolOfFish private (private val fish: Array[Long]) {
     fish(8) = finished
   }
 
-  def count(): Long = fish.sum
+  def count: Long = fish.sum
 }
 
 object SchoolOfFish {
