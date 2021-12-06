@@ -10,6 +10,12 @@ repositories {
     mavenCentral()
 }
 
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(11)
+    }
+}
+
 def scalaVersion = "2.13.7"
 def scalaMinorVersion = "2.13"
 

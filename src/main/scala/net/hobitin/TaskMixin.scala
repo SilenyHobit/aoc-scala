@@ -5,10 +5,7 @@ import scala.util.Using
 
 trait TaskMixin {
 
-  def input(): Seq[String] = Using(Source.fromURL(getClass.getResource("input"))){
-    source => source.getLines()
-      .toSeq
-  }.get
+  def input(): Seq[String] = Using(Source.fromURL(getClass.getResource("input")))(_.getLines().toSeq).get
 
   def printFirst(value: Any): Unit = {
     println("First task:")
