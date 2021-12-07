@@ -4,8 +4,6 @@ import net.hobitin.TaskMixin
 
 object Main extends TaskMixin{
 
-  val cache: Array[Long] = new Array[Long](2001)
-
   def main(args:Array[String]): Unit = {
     val crabs = input.head
       .split(",")
@@ -15,8 +13,6 @@ object Main extends TaskMixin{
 
     printFirst(sumFuel(crabs(crabs.length/2), crabs))
 
-    (1 to 2000).foreach(index => cache(index) = cache(index-1) + index)
-
     val min = (0 to 1200).map(sumFuel2(_, crabs)).min
 
     printSecond(min)
@@ -24,6 +20,6 @@ object Main extends TaskMixin{
 
   def sumFuel(chosen: Int, crabs: Seq[Int]): Int = crabs.map(crab => Math.abs(chosen-crab)).sum
 
-  def sumFuel2(chosen: Int, crabs: Seq[Int]): Long = crabs.map(crab => Math.abs(chosen-crab)).map(cache(_)).sum
+  def sumFuel2(chosen: Int, crabs: Seq[Int]): Long = crabs.map(crab => Math.abs(chosen-crab)).map(distance => (distance*(distance+1))/2).sum
 
 }
