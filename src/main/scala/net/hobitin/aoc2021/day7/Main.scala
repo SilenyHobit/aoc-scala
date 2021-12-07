@@ -24,6 +24,6 @@ object Main extends TaskMixin{
 
   def sumFuel(chosen: Int, crabs: Seq[Int]): Int = crabs.map(crab => Math.abs(chosen-crab)).sum
 
-  def sumFuel2(chosen: Int, crabs: Seq[Int]): Long = crabs.map(crab => Math.abs(chosen-crab)).map(index => cache(index)).sum
+  def sumFuel2(chosen: Int, crabs: Seq[Int]): Long = crabs.map(crab => Math.abs(chosen-crab)).map(cache(_)).sum
 
 }
