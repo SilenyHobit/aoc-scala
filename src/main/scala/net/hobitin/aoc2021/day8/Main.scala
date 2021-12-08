@@ -19,8 +19,7 @@ object Main extends TaskMixin {
     printFirst(outputCount)
 
     val sum = input
-      .map(Decoder(_))
-      .map(_.number)
+      .map(Decoder.decode)
       .sum
 
     printSecond(sum)

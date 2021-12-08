@@ -1,11 +1,7 @@
 package net.hobitin.aoc2021.day8
 
-case class Decoder private (number: Int) {
-
-}
-
 object Decoder {
-  def apply(input: String): Decoder = {
+  def decode(input: String): Int = {
     val inputArray = input.split("\\|")
     val digits = inputArray(0)
       .split(" ")
@@ -51,7 +47,7 @@ object Decoder {
       .filter(two != _)
       .head
 
-    val number = inputArray(1)
+    inputArray(1)
       .trim
       .split(" ")
       .map(digit => digit.toCharArray.sorted.foldLeft("")(_+_))
@@ -69,7 +65,5 @@ object Decoder {
       }
       .reduce(_+_)
       .toInt
-
-    Decoder(number)
   }
 }
