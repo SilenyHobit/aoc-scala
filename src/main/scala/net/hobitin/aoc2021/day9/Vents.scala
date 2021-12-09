@@ -11,10 +11,10 @@ class Vents private (private val grid: Array[Array[Int]]) {
     (1 until grid.length-1)
       .flatMap(i => (1 until grid(i).length-1).map((i,_)))
       .filter(coords =>
-        grid(coords._1-1)(coords._2) > grid(coords._1)(coords._2) &&
-          grid(coords._1+1)(coords._2) > grid(coords._1)(coords._2) &&
-          grid(coords._1)(coords._2-1) > grid(coords._1)(coords._2) &&
-          grid(coords._1)(coords._2+1) > grid(coords._1)(coords._2)
+        grid(coords._1-1)(coords._2) > grid(coords._1)(coords._2)
+          && grid(coords._1+1)(coords._2) > grid(coords._1)(coords._2)
+          && grid(coords._1)(coords._2-1) > grid(coords._1)(coords._2)
+          && grid(coords._1)(coords._2+1) > grid(coords._1)(coords._2)
       )
   }
 
@@ -28,22 +28,34 @@ class Vents private (private val grid: Array[Array[Int]]) {
 
   private def basinSize(testedPoint: (Int, Int), visited: Array[Array[Boolean]]): Int = {
     var currentSize = 1
-    if (grid(testedPoint._1-1)(testedPoint._2) > grid(testedPoint._1)(testedPoint._2) && grid(testedPoint._1-1)(testedPoint._2) < 9 && !visited(testedPoint._1-1)(testedPoint._2)) {
+    if (grid(testedPoint._1-1)(testedPoint._2) > grid(testedPoint._1)(testedPoint._2)
+      && grid(testedPoint._1-1)(testedPoint._2) < 9
+      && !visited(testedPoint._1-1)(testedPoint._2)
+    ) {
       visited(testedPoint._1-1)(testedPoint._2) = true
       currentSize += basinSize((testedPoint._1-1, testedPoint._2), visited)
     }
 
-    if (grid(testedPoint._1+1)(testedPoint._2) > grid(testedPoint._1)(testedPoint._2) && grid(testedPoint._1+1)(testedPoint._2) < 9 && !visited(testedPoint._1+1)(testedPoint._2)) {
+    if (grid(testedPoint._1+1)(testedPoint._2) > grid(testedPoint._1)(testedPoint._2)
+      && grid(testedPoint._1+1)(testedPoint._2) < 9
+      && !visited(testedPoint._1+1)(testedPoint._2)
+    ) {
       visited(testedPoint._1+1)(testedPoint._2) = true
       currentSize += basinSize((testedPoint._1+1, testedPoint._2), visited)
     }
 
-    if (grid(testedPoint._1)(testedPoint._2-1) > grid(testedPoint._1)(testedPoint._2) && grid(testedPoint._1)(testedPoint._2-1) < 9 && !visited(testedPoint._1)(testedPoint._2-1)) {
+    if (grid(testedPoint._1)(testedPoint._2-1) > grid(testedPoint._1)(testedPoint._2)
+      && grid(testedPoint._1)(testedPoint._2-1) < 9
+      && !visited(testedPoint._1)(testedPoint._2-1)
+    ) {
       visited(testedPoint._1)(testedPoint._2-1) = true
       currentSize += basinSize((testedPoint._1, testedPoint._2-1), visited)
     }
 
-    if (grid(testedPoint._1)(testedPoint._2+1) > grid(testedPoint._1)(testedPoint._2) && grid(testedPoint._1)(testedPoint._2+1) < 9 && !visited(testedPoint._1)(testedPoint._2+1)) {
+    if (grid(testedPoint._1)(testedPoint._2+1) > grid(testedPoint._1)(testedPoint._2)
+      && grid(testedPoint._1)(testedPoint._2+1) < 9
+      && !visited(testedPoint._1)(testedPoint._2+1)
+    ) {
       visited(testedPoint._1)(testedPoint._2+1) = true
       currentSize += basinSize((testedPoint._1, testedPoint._2+1), visited)
     }
