@@ -10,15 +10,14 @@ object Main extends TaskMixin {
       .map(_.toInt)
       .toSeq
 
-    val boards = new Boards(inputRows.tail
-      .grouped(6)
-      .map(_.tail)
-      .map(Board(_))
-      .toSeq
-    )
-
-    calledNumbers.map(number => boards.mark(number))
-      .takeWhile(!_)
+    val boards = calledNumbers.foldLeft(
+      Boards(inputRows.tail
+        .grouped(6)
+        .map(_.tail)
+        .map(Board(_))
+        .toSeq
+      )
+    )(_.mark(_))
 
     printFirst(boards.firstSum)
     printSecond(boards.lastSum)
