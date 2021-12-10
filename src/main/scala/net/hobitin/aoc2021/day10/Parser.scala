@@ -12,7 +12,7 @@ class Parser {
       case '[' => expected = expected.prepended(']')
       case '<' => expected = expected.prepended('>')
       case x => {
-        if (!expected.isEmpty && corrupted.isEmpty && x != expected.head) {
+        if (expected.nonEmpty && corrupted.isEmpty && x != expected.head) {
           corrupted = Some(x)
         } else if (x == expected.head){
           expected = expected.tail
