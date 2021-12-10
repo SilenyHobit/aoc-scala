@@ -11,13 +11,12 @@ class Parser {
       case '{' => expected = expected.prepended('}')
       case '[' => expected = expected.prepended(']')
       case '<' => expected = expected.prepended('>')
-      case x => {
+      case x =>
         if (expected.nonEmpty && corrupted.isEmpty && x != expected.head) {
           corrupted = Some(x)
-        } else if (x == expected.head){
+        } else if (x == expected.head) {
           expected = expected.tail
         }
-      }
     }
   }
 
@@ -34,18 +33,17 @@ class Parser {
   def isCorrupted: Boolean = corrupted.isDefined
 
   def autocompleteScore: Long = {
-    var score = 0L
-    expected.foreach(c => {
-      score *= 5
-      score += (c match {
-        case ')' => 1
-        case ']' => 2
-        case '}' => 3
-        case '>' => 4
-      })
-    })
-
-    score
+    expected.foldLeft(0L)(
+      (score, character) => {
+        (score * 5) + (
+          character match {
+            case ')' => 1
+            case ']' => 2
+            case '}' => 3
+            case '>' => 4
+          })
+      }
+    )
   }
 
 }
