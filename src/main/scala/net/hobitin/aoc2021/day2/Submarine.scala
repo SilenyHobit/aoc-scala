@@ -1,20 +1,18 @@
 package net.hobitin.aoc2021.day2
 
-class Submarine {
-
-  private var depth = 0L
-  private var position = 0L
+class Submarine private(private val depth: Int, private val position: Int) {
 
   def process(input: Array[String]): Submarine = {
     input match {
-      case Array("forward", number) => position += number.toInt
-      case Array("down", number) => depth += number.toInt
-      case Array("up", number) => depth -= number.toInt
+      case Array("forward", number) => new Submarine(depth, position + number.toInt)
+      case Array("down", number) => new Submarine(depth + number.toInt, position)
+      case Array("up", number) => new Submarine(depth - number.toInt, position)
     }
-
-    this
   }
 
   def report: Long = depth * position
+}
 
+object Submarine {
+  def apply(): Submarine = new Submarine(0, 0)
 }

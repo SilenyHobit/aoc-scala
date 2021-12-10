@@ -7,14 +7,14 @@ object Main extends TaskMixin {
 
     val first = input
       .map(_.split(" "))
-      .foldLeft(new Submarine)((submarine, array) => submarine.process(array))
+      .foldLeft(Submarine())((submarine, array) => submarine.process(array))
       .report
 
     printFirst(first)
 
     val second = input
       .map(_.split(" "))
-      .foldLeft(new SubmarineWithAim)((submarine, array) => submarine.process(array))
+      .foldLeft(SubmarineWithAim())((submarine, array) => submarine.process(array))
       .report
 
     printFirst(second)
