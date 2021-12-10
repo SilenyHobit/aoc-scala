@@ -9,6 +9,7 @@ object Main extends TaskMixin {
         .foldLeft(SchoolOfFish(input.head))((schoolOfFish, _) => schoolOfFish.nextDay())
         .count
     )
+
     printSecond(
       (0 until 256)
         .foldLeft(SchoolOfFish(input.head))((schoolOfFish, _) => schoolOfFish.nextDay())

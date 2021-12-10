@@ -16,7 +16,7 @@ object Decoder {
     val sixLineDigits = digits.filter(_.length == 6)
 
     val six = sixLineDigits
-      .filter(digit => !digit.contains(one(0)) || !digit.contains(one(1)))
+      .filter(digit => !one.toCharArray.forall(digit.contains(_)))
       .head
 
     val nine = sixLineDigits
@@ -31,7 +31,7 @@ object Decoder {
     val fiveLineDigits = digits.filter(_.length == 5)
 
     val three = fiveLineDigits
-      .filter(digit => digit.contains(one(0)) && digit.contains(one(1)))
+      .filter(digit => one.toCharArray.forall(digit.contains(_)))
       .head
 
     val lines = "abcdefg".toCharArray
@@ -63,7 +63,7 @@ object Decoder {
         case x if eight.equals(x) => "8"
         case x if nine.equals(x) => "9"
       }
-      .reduce(_+_)
+      .reduceLeft(_+_)
       .toInt
   }
 }

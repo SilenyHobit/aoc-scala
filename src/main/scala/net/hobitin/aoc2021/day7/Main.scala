@@ -8,14 +8,12 @@ object Main extends TaskMixin{
     val crabs = input.head
       .split(",")
       .map(_.toInt)
-      .sortWith(_<_)
+      .sorted
       .toSeq
 
     printFirst(sumFuel(crabs(crabs.length/2), crabs))
 
-    val min = (0 to 1200).map(sumFuel2(_, crabs)).min
-
-    printSecond(min)
+    printSecond((0 to 1200).map(sumFuel2(_, crabs)).min)
   }
 
   def sumFuel(chosen: Int, crabs: Seq[Int]): Int = crabs.map(crab => Math.abs(chosen-crab)).sum
