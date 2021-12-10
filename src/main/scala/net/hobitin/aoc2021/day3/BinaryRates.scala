@@ -2,20 +2,17 @@ package net.hobitin.aoc2021.day3
 
 import scala.annotation.tailrec
 
-class BinaryRates {
+class BinaryRates(private val commonality: Option[Array[Int]] = None) {
 
-  private var commonality: Option[Array[Int]] = None
-
-  def process(input: String): BinaryRates = {
-    commonality match {
-      case None => commonality = Some(input.toCharArray.zip(new Array[Int](input.length))
-        .map(pair => if (pair._1 == '0') pair._2 - 1 else pair._2 + 1))
-      case Some(array) => commonality = Some(input.toCharArray.zip(array)
-        .map(pair => if (pair._1 == '0') pair._2 - 1 else pair._2 + 1))
-    }
-
-    this
-  }
+  def process(input: String): BinaryRates =
+    new BinaryRates(
+      commonality match {
+        case None => Some(input.toCharArray.zip(new Array[Int](input.length))
+          .map(pair => if (pair._1 == '0') pair._2 - 1 else pair._2 + 1))
+        case Some(array) => Some(input.toCharArray.zip(array)
+          .map(pair => if (pair._1 == '0') pair._2 - 1 else pair._2 + 1))
+      }
+    )
 
   def gammaRate: Int = {
     val gamma = commonality.get
