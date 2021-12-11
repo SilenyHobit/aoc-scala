@@ -1,16 +1,24 @@
 package net.hobitin.aoc2021.day4
 
-import net.hobitin.TaskMixin
+import net.hobitin.Day
 
-object Main extends TaskMixin {
-  def main(args: Array[String]): Unit = {
+object Day4 extends Day {
+
+
+  override def name: String = "Day 4: Giant Squid"
+
+  override def firstTask: Any = load.firstSum
+
+  override def secondTask: Any = load.lastSum
+
+  private def load: Boards = {
     val inputRows = input
     val calledNumbers = inputRows.head
       .split(",")
       .map(_.toInt)
       .toSeq
 
-    val boards = calledNumbers.foldLeft(
+    calledNumbers.foldLeft(
       Boards(inputRows.tail
         .grouped(6)
         .map(_.tail)
@@ -18,8 +26,6 @@ object Main extends TaskMixin {
         .toSeq
       )
     )(_.mark(_))
-
-    printFirst(boards.firstSum)
-    printSecond(boards.lastSum)
   }
+
 }
