@@ -4,7 +4,7 @@ import scala.annotation.tailrec
 
 class Octopuses private(private val grid: Array[Array[Int]], val flashes: Int = 0, private val steps: Int = 1, val allFlashedOn: Option[Int] = None) {
 
-  def step(): Octopuses = update(grid.map(_.map(_ + 1)), Array.fill(grid.length, grid(0).length)(false))
+  def step: Octopuses = update(grid.map(_.map(_ + 1)), Array.fill(grid.length, grid(0).length)(false))
 
   @tailrec
   private def update(input: Array[Array[Int]], flashed: Array[Array[Boolean]]): Octopuses = {

@@ -10,7 +10,7 @@ object Day11 extends Day {
 
   override def firstTask: Any =
     (0 until 100)
-      .foldLeft(Octopuses(input))((octopuses, _) => octopuses.step())
+      .foldLeft(Octopuses(input))((octopuses, _) => octopuses.step)
       .flashes
 
   override def secondTask: Any = findAllFlash(Octopuses(input))
@@ -18,7 +18,7 @@ object Day11 extends Day {
   @tailrec
   private def findAllFlash(octopuses: Octopuses): Int = {
     if (octopuses.allFlashedOn.isDefined) octopuses.allFlashedOn.get
-    else findAllFlash(octopuses.step())
+    else findAllFlash(octopuses.step)
   }
 
 }
