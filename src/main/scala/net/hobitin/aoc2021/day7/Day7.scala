@@ -12,7 +12,12 @@ object Day7 extends Day{
     sumFuel(cachedCrabs(cachedCrabs.length/2), cachedCrabs)
   }
 
-  override def secondTask: Any = (0 to 1200).map(sumFuel2(_, crabs)).min
+  override def secondTask: Any = {
+    val cachedCrabs = crabs
+    val averageCrab = cachedCrabs.sum / cachedCrabs.length
+
+    Seq(averageCrab - 1, averageCrab, averageCrab + 1).map(sumFuel2(_, cachedCrabs)).min
+  }
 
   private def crabs: Seq[Int] =
     input.head
