@@ -15,7 +15,7 @@ object RunSingleDay {
     runSingleDay(day)
   }
 
-  def runSingleDay(day: Day)(implicit runs: Int = 1): Duration = {
+  def runSingleDay(day: Day, runs: Int = 1): Duration = {
     val result = (0 until runs)
       .map(_ => {
         val firstStart = Instant.now()

@@ -20,7 +20,7 @@ object RunAllDays {
   def main(args: Array[String]): Unit = {
     println("------------------------------------------------------------------")
     val overallDuration = days
-      .map(RunSingleDay.runSingleDay(_)(50))
+      .map(RunSingleDay.runSingleDay(_,50))
       .reduce(_.plus(_))
 
     println(f"${overallDuration.toSecondsPart}%57d.${overallDuration.toNanosPart/1000}%06dS")
