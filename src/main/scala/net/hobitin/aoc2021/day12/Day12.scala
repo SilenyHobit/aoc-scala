@@ -22,9 +22,7 @@ object Day12 extends Day {
   private def buildNodes: Seq[Node] = {
     val nodeMap = input
       .map(_.split("-"))
-      .flatMap(nodes => {
-        Seq((nodes.head, nodes.tail.head), (nodes.tail.head, nodes.head))
-      })
+      .flatMap(nodes => Seq((nodes.head, nodes.tail.head), (nodes.tail.head, nodes.head)))
       .groupMap(_._1)(_._2)
 
     val nodes = nodeMap
