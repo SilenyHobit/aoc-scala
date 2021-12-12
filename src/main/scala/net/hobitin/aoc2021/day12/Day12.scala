@@ -10,7 +10,6 @@ object Day12 extends Day {
       .filter(_.name == "start")
       .head
       .walk1()
-      .size
   }
 
   override def secondTask: Any = {
@@ -18,7 +17,6 @@ object Day12 extends Day {
       .filter(_.name == "start")
       .head
       .walk2()
-      .size
   }
 
   private def buildNodes: Seq[Node] = {
@@ -36,7 +34,8 @@ object Day12 extends Day {
 
     nodes
       .map(node => {
-        nodeMap.get(node.name)
+        nodeMap
+          .get(node.name)
           .map(links =>
             links.foldLeft(node)((node, link) =>
               node.link(nodes.filter(_.name == link).head)

@@ -12,25 +12,25 @@ class Node(val name: String,
     this
   }
 
-  def walk1(): Seq[Seq[Node]] = {
+  def walk1(): Int = {
     walk(Seq.empty)((node, _) => node.isAvailable1)
   }
 
-  def walk2(): Seq[Seq[Node]] = {
-    walk(Seq.empty)((node, path) => node.isAvailable2(path))
+  def walk2(): Int = {
+    walk(Seq.empty)(_.isAvailable2(_))
   }
 
-  private def walk(path: Seq[Node])(availableCheck: (Node, Seq[Node]) => Boolean): Seq[Seq[Node]] = {
-    if (name == "end") Seq(path.appended(this))
+  private def walk(path: Seq[Node])(availableCheck: (Node, Seq[Node]) => Boolean): Int = {
+    if (name == "end") 1
     else {
       visited += 1
       val result = linked
         .filter(availableCheck(_, path))
         .map(_.walk(path.appended(this))(availableCheck))
-        .filter(_.nonEmpty)
+        .sum
       visited -= 1
 
-      if (result.isEmpty) Seq.empty else result.reduce(_.appendedAll(_))
+      result
     }
   }
 
