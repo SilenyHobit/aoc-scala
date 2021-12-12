@@ -11,25 +11,35 @@ object RunSingleDay {
   private val day = Day12
 
   def main(args: Array[String]): Unit = {
-    println("-----------------------------------------------------------------")
+    println("------------------------------------------------------------------")
     runSingleDay(day)
   }
 
-  def runSingleDay(day: Day): Duration = {
-    val firstStart = Instant.now()
-    val firstResult = day.firstTask
-    val firstDuration = Duration.between(firstStart, Instant.now()).truncatedTo(ChronoUnit.MILLIS)
+  def runSingleDay(day: Day)(implicit runs: Int = 1): Duration = {
+    val result = (0 until runs)
+      .map(_ => {
+        val firstStart = Instant.now()
+        val firstResult = day.firstTask
+        val firstDuration = Duration.between(firstStart, Instant.now())
 
-    val secondStart = Instant.now()
-    val secondResult = day.secondTask
-    val secondDuration = Duration.between(secondStart, Instant.now()).truncatedTo(ChronoUnit.MILLIS)
+        val secondStart = Instant.now()
+        val secondResult = day.secondTask
+        val secondDuration = Duration.between(secondStart, Instant.now())
+
+        (firstResult, secondResult, firstDuration.toNanos, secondDuration.toNanos)
+      })
+      .reduce((tuple1, tuple2) => (tuple1._1, tuple1._2, tuple1._3 + tuple2._3, tuple1._4 + tuple2._4))
+
+    val firstDuration = Duration.ofNanos(result._3/runs)
+
+    val secondDuration = Duration.ofNanos(result._4/runs)
 
     val duration = firstDuration.plus(secondDuration)
 
-    println(f"| ${day.name}%-30s | ${duration.toSecondsPart}%23d.${duration.toMillisPart}%03dS |")
-    println(f"| ${"    Part 1"}%-30s | ${firstResult}%15s | ${firstDuration.toSecondsPart}%5d.${firstDuration.toMillisPart}%03dS |")
-    println(f"| ${"    Part 2"}%-30s | ${secondResult}%15s | ${secondDuration.toSecondsPart}%5d.${secondDuration.toMillisPart}%03dS |")
-    println("-----------------------------------------------------------------")
+    println(f"| ${day.name}%-30s | ${duration.toSecondsPart}%21d.${duration.toNanosPart/1000}%06dS |")
+    println(f"| ${"    Part 1"}%-30s | ${result._1}%15s | ${firstDuration.toSecondsPart}%3d.${firstDuration.toNanosPart/1000}%06dS |")
+    println(f"| ${"    Part 2"}%-30s | ${result._2}%15s | ${secondDuration.toSecondsPart}%3d.${secondDuration.toNanosPart/1000}%06dS |")
+    println("------------------------------------------------------------------")
 
     duration
   }
