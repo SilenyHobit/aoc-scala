@@ -10,13 +10,13 @@ object Day2 extends Day {
   override def firstTask: Any =
     input
       .map(_.split(" "))
-      .foldLeft(Submarine())((submarine, array) => submarine.process(array))
+      .foldLeft(Submarine())(_.process(_))
       .report
 
   override def secondTask: Any =
     input
       .map(_.split(" "))
-      .foldLeft(SubmarineWithAim())((submarine, array) => submarine.process(array))
+      .foldLeft(SubmarineWithAim())(_.process(_))
       .report
 
 }
