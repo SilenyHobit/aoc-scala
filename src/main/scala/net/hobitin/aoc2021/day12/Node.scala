@@ -39,7 +39,7 @@ class Node(val name: String,
   private def isAvailable2(path: Seq[Node]): Boolean = {
     if (name == "start" && visited == 1) false
     else if (isLowerCased && visited > 1) false
-    else if (visited == 1 && name.toLowerCase == name && path.count(node => node.isLowerCased && node.visited > 1) > 0) false
+    else if (visited == 1 && name.toLowerCase == name && path.exists(node => node.isLowerCased && node.visited > 1)) false
     else true
   }
 
