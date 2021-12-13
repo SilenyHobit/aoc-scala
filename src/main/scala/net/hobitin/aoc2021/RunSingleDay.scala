@@ -1,13 +1,13 @@
 package net.hobitin.aoc2021
 
 import net.hobitin.Day
-import net.hobitin.aoc2021.day12.Day12
+import net.hobitin.aoc2021.day13.Day13
 
 import java.time.{Duration, Instant}
 
 object RunSingleDay {
 
-  private val day = Day12
+  private val day = Day13
 
   def main(args: Array[String]): Unit = {
     println("------------------------------------------------------------------")

@@ -4,7 +4,6 @@ import net.hobitin.Day
 
 object Day4 extends Day {
 
-
   override def name: String = "Day 4: Giant Squid"
 
   override def firstTask: Any = load.firstSum
