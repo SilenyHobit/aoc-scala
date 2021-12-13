@@ -8,9 +8,9 @@ class BinaryRates(private val commonality: Option[Array[Int]] = None) {
     new BinaryRates(
       commonality match {
         case None => Some(input.toCharArray.zip(new Array[Int](input.length))
-          .map(pair => if (pair._1 == '0') pair._2 - 1 else pair._2 + 1))
+          .map(tuple => if (tuple._1 == '0') tuple._2 - 1 else tuple._2 + 1))
         case Some(array) => Some(input.toCharArray.zip(array)
-          .map(pair => if (pair._1 == '0') pair._2 - 1 else pair._2 + 1))
+          .map(tuple => if (tuple._1 == '0') tuple._2 - 1 else tuple._2 + 1))
       }
     )
 
