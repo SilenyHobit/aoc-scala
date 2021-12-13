@@ -20,7 +20,7 @@ object Day13 extends Day {
     commands
       .foldLeft(origami)(_.fold(_))
       .grid
-      .map(array => array.map(if(_) "#" else " ").reduce(_+_))
+      .map(_.map(if(_) "#" else " ").reduce(_+_))
 
     // add .forach(println) to expression above
     "ZKAUCFUC"
