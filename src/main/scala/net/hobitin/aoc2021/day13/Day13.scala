@@ -7,11 +7,7 @@ object Day13 extends Day {
   override def name: String = "Day 13: Transparent Origami"
 
   override def firstTask: Any = {
-    val origami = Origami(input.takeWhile(_.nonEmpty))
-
-    val commands = input
-      .dropWhile(_.nonEmpty)
-      .drop(1)
+    val (origami, commands) = parse
 
     origami
       .fold(commands.head)
@@ -19,11 +15,7 @@ object Day13 extends Day {
   }
 
   override def secondTask: Any = {
-    val origami = Origami(input.takeWhile(_.nonEmpty))
-
-    val commands = input
-      .dropWhile(_.nonEmpty)
-      .drop(1)
+    val (origami, commands) = parse
 
     commands
       .foldLeft(origami)(_.fold(_))
@@ -32,6 +24,17 @@ object Day13 extends Day {
 
     // add .forach(println) to expression above
     "ZKAUCFUC"
+  }
+
+  private def parse: (Origami, Seq[String]) = {
+    val inputRows = input
+    val origami = Origami(inputRows.takeWhile(_.nonEmpty))
+
+    val commands = inputRows
+      .dropWhile(_.nonEmpty)
+      .drop(1)
+
+    (origami, commands)
   }
 
 }
