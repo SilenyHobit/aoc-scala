@@ -1,16 +1,16 @@
 package net.hobitin.aoc2021
 
 import net.hobitin.Day
-import net.hobitin.aoc2021.day13.Day13
+import net.hobitin.aoc2021.day14.Day14
 
 import java.time.{Duration, Instant}
 
 object RunSingleDay {
 
-  private val day = Day13
+  private val day = Day14
 
   def main(args: Array[String]): Unit = {
-    println("------------------------------------------------------------------")
+    println("-----------------------------------------------------------------------")
     runSingleDay(day)
   }
 
@@ -39,10 +39,10 @@ object RunSingleDay {
 
     val duration = firstDuration.plus(secondDuration)
 
-    println(f"| ${day.name}%-30s | ${duration.toSecondsPart}%21d.${duration.toNanosPart / 1000}%06dS |")
-    println(f"| ${"    Part 1"}%-30s | ${result._1}%15s | ${firstDuration.toSecondsPart}%3d.${firstDuration.toNanosPart / 1000}%06dS |")
-    println(f"| ${"    Part 2"}%-30s | ${result._2}%15s | ${secondDuration.toSecondsPart}%3d.${secondDuration.toNanosPart / 1000}%06dS |")
-    println("------------------------------------------------------------------")
+    println(f"| ${day.name}%-35s | ${duration.toSecondsPart}%21d.${duration.toNanosPart / 1000}%06dS |")
+    println(f"| ${"    Part 1"}%-35s | ${result._1}%15s | ${firstDuration.toSecondsPart}%3d.${firstDuration.toNanosPart / 1000}%06dS |")
+    println(f"| ${"    Part 2"}%-35s | ${result._2}%15s | ${secondDuration.toSecondsPart}%3d.${secondDuration.toNanosPart / 1000}%06dS |")
+    println("-----------------------------------------------------------------------")
 
     duration
   }
