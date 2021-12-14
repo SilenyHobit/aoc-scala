@@ -29,12 +29,13 @@ object Day14 extends Day {
       .groupMap(identity)(_ => 1L)
       .view
       .mapValues(_.sum)
+      .toMap
 
     val counter = new Array[Long](26)
     polymer.foreach(value => counter(value-'A') += 1)
 
     (0 until runs)
-      .foldLeft(pairs.toMap)((polymerPairs, _) => {
+      .foldLeft(pairs)((polymerPairs, _) => {
         polymerPairs
           .toSeq
           .flatMap(tuple => {
